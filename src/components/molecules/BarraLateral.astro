@@ -1,0 +1,103 @@
+<aside class="w-72 fixed top-0 left-0 h-full flex flex-col
+            border-r border-slate-200/80 dark:border-slate-800/80
+            bg-white dark:bg-gray-900 hidden md:flex">
+  <!-- 
+    w-72: ancho fijo de 18rem
+    fixed top-0 left-0: posición fija en la esquina superior izquierda
+    h-full: altura completa de la pantalla
+    flex flex-col: contenedor flex en columna
+    border-r border-slate-200/80: borde derecho gris claro con opacidad
+    dark:border-slate-800/80: borde derecho en modo oscuro
+    bg-white dark:bg-gray-900: fondo blanco, gris oscuro en modo oscuro
+    hidden md:flex: oculto en móviles, visible en pantallas medianas en adelante
+  -->
+
+  <!-- Perfil -->
+  <div class="flex flex-col items-center px-8 pb-8 gap-3">
+    <!-- 
+      flex flex-col: columna
+      items-center: centrado horizontal
+      px-8 pb-8: padding horizontal y padding inferior
+      gap-3: espacio entre elementos
+    -->
+    <img src="/src/assets/img/mifoto.jpeg" alt="Foto de perfil" class="w-24 h-24 rounded-full object-cover" />
+    <!-- 
+      w-24 h-24: ancho y alto de 6rem
+      rounded-full: imagen circular
+      object-cover: la imagen cubre el contenedor manteniendo proporción
+    -->
+    <h3 class="text-lg font-semibold text-slate-900 dark:text-white text-center">Lizeth Moreno Piña</h3>
+    <!-- 
+      text-lg: tamaño de letra grande
+      font-semibold: semi-negrita
+      text-slate-900 dark:text-white: color en modo claro y oscuro
+      text-center: centrado
+    -->
+    <p class="text-sm text-slate-600 dark:text-slate-300 text-center">Estudiante de Ingeniería en Sistemas Computacionales</p>
+    <!-- 
+      text-sm: tamaño de letra pequeño
+      text-slate-600 dark:text-slate-300: color en modo claro y oscuro
+      text-center: centrado
+    -->
+  </div>
+
+  <!-- Menú (vacío por ahora) -->
+  <nav class="flex-1 px-6">
+    <!-- 
+      flex-1: ocupa todo el espacio restante
+      px-6: padding horizontal
+    -->
+    <slot name="menu" />
+    <!-- Slot para insertar el menú desde otro componente -->
+  </nav>
+
+  <!-- Enlaces de contacto -->
+  <div class="p-6 mt-auto flex flex-col gap-4 border-t border-slate-200/50 dark:border-slate-700/50">
+    <!-- 
+      p-6: padding
+      mt-auto: se pega al final del contenedor
+      flex flex-col gap-4: disposición en columna con espacio entre elementos
+      border-t border-slate-200/50 dark:border-slate-700/50: borde superior con colores según tema
+    -->
+
+    <!-- Correo (abre Gmail directamente) -->
+    <a href="https://mail.google.com/mail/?view=cm&to=morenolizeth272@gmail.com" target="_blank" class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-pink-600 transition-colors">
+      <!-- 
+        flex items-center: flex horizontal con centrado vertical
+        gap-3: espacio entre ícono y texto
+        text-slate-600 dark:text-slate-300: color del texto según tema
+        hover:text-pink-600: cambia a rosa al pasar el cursor
+        transition-colors: transición suave de color
+      -->
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <!-- Ícono de correo -->
+        <path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 0v.01L12 13 20 4.01V4H4zm0 2.828V20h16V6.828l-8 7-8-7z"/>
+      </svg>
+      <span class="text-sm">morenolizeth272@gmail.com</span>
+      <!-- Texto del correo -->
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5525237388" target="_blank" class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-green-500 transition-colors">
+      <!-- Misma documentación que el enlace anterior, cambio de color hover a verde -->
+      <svg class="w-6 h-6" viewBox="0 0 32 32" fill="currentColor">
+        <path d="M16 0C7.163 0 0 7.163 0 16c0 2.828.74 5.477 2.025 7.779L0 32l8.441-2.019A15.946 15.946 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm8.97 22.033l-1.868 5.41-5.593-1.674A12.959 12.959 0 0116 28c-7.179 0-13-5.821-13-13S8.821 2 16 2s13 5.821 13 13c0 3.325-1.226 6.366-3.03 8.033z"/>
+        <path d="M23.237 20.715c-.325-.163-1.924-.951-2.223-1.061-.298-.112-.515-.163-.731.162-.216.325-.836 1.061-1.025 1.276-.188.216-.375.243-.7.081-.325-.162-1.375-.505-2.617-1.625-.968-.861-1.621-1.923-1.811-2.25-.188-.325-.02-.5.144-.662.148-.147.325-.388.487-.581.163-.193.216-.325.325-.541.108-.216.054-.406-.027-.569-.081-.162-.731-1.761-1.005-2.415-.264-.625-.531-.541-.731-.551-.188-.011-.406-.014-.619-.014-.216 0-.569.081-.868.406-.298.325-1.14 1.115-1.14 2.719s1.17 3.156 1.333 3.375c.162.216 2.305 3.525 5.584 4.938 3.279 1.414 3.279.944 3.868.888.587-.056 1.924-.787 2.192-1.547.27-.759.27-1.413.188-1.547-.081-.136-.297-.216-.623-.378z"/>
+      </svg>
+      <span class="text-sm">+52 5525237388</span>
+      <!-- Texto del número de WhatsApp -->
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/lizMore19" target="_blank" class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-gray-800 dark:hover:text-white transition-colors">
+      <!-- Enlace a GitHub con cambios de color al pasar el cursor -->
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.371 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.111.82-.261.82-.579 0-.285-.011-1.041-.016-2.044-3.338.726-4.042-1.613-4.042-1.613-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.774.419-1.305.762-1.605-2.665-.303-5.466-1.335-5.466-5.932 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.486 11.486 0 013.003-.404c1.018.004 2.045.138 3.003.404 2.289-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.911 1.236 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .321.216.694.825.576C20.565 21.796 24 17.303 24 12c0-6.627-5.373-12-12-12z"/>
+      </svg>
+      <span class="text-sm">lizMore19</span>
+      <!-- Texto del usuario de GitHub -->
+    </a>
+
+  </div>
+
+</aside>

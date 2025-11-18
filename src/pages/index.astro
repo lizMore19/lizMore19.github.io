@@ -1,10 +1,60 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteMaintenance from '../components/templates/SiteMaintenance.astro';
+import DiseñoPrincipal from '../layouts/DiseñoPrincipal.astro'; // Layout principal que envuelve toda la página
+import BarraLateral from '../components/molecules/BarraLateral.astro'; // Componente de la barra lateral
+
+// Importación de secciones principales del portafolio
+import SobreMi from '../components/templates/SobreMi.astro'; 
+import Habilidades from '../components/templates/Habilidades.astro';
+import Proyectos from '../components/templates/Proyectos.astro';
+import Contacto from '../components/templates/Contacto.astro';
+import Avatar from '../components/atoms/Avatar.astro'; // Componente de avatar para la foto de perfil
+import Footer from '../components/templates/Footer.astro'; // Pie de página
 ---
 
-<Layout>
-	<h1>Hola mundo</h1>
-	<p>Holaaaaaa</p>
-	<SiteMaintenance />
-</Layout>
+<!-- Se envuelve todo el contenido dentro del layout principal -->
+<DiseñoPrincipal titulo="Portafolio | Liz">
+
+    <!-- Barra lateral con perfil, menú de navegación y contacto -->
+    <BarraLateral slot="barra-lateral">
+
+        <!-- Sección de perfil con foto, nombre y profesión -->
+        <div slot="perfil">
+            <Avatar src="https://via.placeholder.com/150" /> <!-- Avatar de perfil -->
+            <h2 class="text-xl font-bold mt-3">Tu Nombre</h2> <!-- Nombre del usuario -->
+            <p class="text-sm text-slate-500">Tu Profesión</p> <!-- Profesión del usuario -->
+        </div>
+
+        <!-- Menú de navegación de la barra lateral -->
+        <ul slot="menu" class="flex flex-col gap-2">
+            <li><a href="#sobre-mi" class="flex items-center gap-3 px-4 py-2">Sobre mí</a></li>
+            <li><a href="#habilidades" class="flex items-center gap-3 px-4 py-2">Habilidades</a></li>
+            <li><a href="#proyectos" class="flex items-center gap-3 px-4 py-2">Proyectos</a></li>
+            <li><a href="#contacto" class="flex items-center gap-3 px-4 py-2">Contacto</a></li>
+        </ul>
+
+       
+
+    </BarraLateral>
+
+    <!-- Secciones principales del portafolio -->
+    <section id="sobre-mi">
+        <SobreMi /> <!-- Componente con información sobre mi-->
+    </section>
+
+    <section id="habilidades">
+        <Habilidades /> <!-- Componente que muestra habilidades -->
+    </section>
+
+    <section id="proyectos">
+        <Proyectos /> <!-- Componente que muestra los proyectos -->
+    </section>
+
+    <section id="contacto">
+        <Contacto /> <!-- Componente con formulario -->
+    </section>
+
+    <section id="footer">
+        <Footer /> <!-- Pie de página -->
+    </section>
+    
+</DiseñoPrincipal>

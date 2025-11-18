@@ -1,0 +1,8 @@
+---
+const { src = "", alt = "Foto de perfil" } = Astro.props;
+---
+
+<div class="w-32 h-32 rounded-full bg-cover bg-center"
+     style={`background-image: url('${src}')`}
+     aria-label={alt}>
+</div>
