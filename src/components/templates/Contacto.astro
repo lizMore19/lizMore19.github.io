@@ -1,0 +1,114 @@
+<section class="mb-16 md:mb-24 w-full flex justify-center">
+  <!-- 
+    mb-16: margen inferior en móviles
+    md:mb-24: margen inferior en pantallas medianas
+    w-full: ancho completo
+    flex justify-center: uso de flexbox y centrado horizontal del contenido
+  -->
+
+  <div class="max-w-lg w-full bg-white shadow-lg rounded-xl p-8 border border-slate-200">
+    <!-- 
+      max-w-lg: ancho máximo del contenedor
+      w-full: ancho completo del contenedor
+      bg-white: fondo blanco
+      shadow-lg: sombra grande
+      rounded-xl: bordes redondeados extra
+      p-8: padding interno
+      border border-slate-200: borde de color gris claro
+    -->
+
+    <!-- Título -->
+    <h2 class="text-3xl font-bold text-center mb-2">Contacto</h2>
+    <!-- 
+      text-3xl: tamaño de letra grande
+      font-bold: negrita
+      text-center: centrado del texto
+      mb-2: margen inferior
+    -->
+
+    <!-- Texto introductorio -->
+    <p class="text-center text-slate-600 mb-8">
+      Déjame tus datos y me pondré en contacto contigo lo antes posible.
+      <!-- 
+        text-center: centrado del texto
+        text-slate-600: color gris medio
+        mb-8: margen inferior
+      -->
+    </p>
+
+    <form class="space-y-6">
+      <!-- 
+        space-y-6: espacio vertical entre los elementos del formulario
+      -->
+
+      <!-- Nombre -->
+      <div>
+        <label class="block font-semibold mb-1">Nombre</label>
+        <!-- 
+          block: ocupa todo el ancho disponible
+          font-semibold: semi-negrita
+          mb-1: margen inferior
+        -->
+        <input
+          type="text"
+          placeholder="Ingresa tu nombre"
+          class="w-full p-3 rounded-lg bg-slate-100 border border-slate-300 focus:ring-2 focus:ring-pink-400 outline-none"
+        />
+        <!-- 
+          w-full: ancho completo
+          p-3: padding interno
+          rounded-lg: bordes redondeados
+          bg-slate-100: fondo gris claro
+          border border-slate-300: borde gris
+          focus:ring-2 focus:ring-pink-400: efecto de resalte rosa al enfocar
+          outline-none: quitar borde por defecto al enfocar
+        -->
+      </div>
+
+      <!-- Correo -->
+      <div>
+        <label class="block font-semibold mb-1">Correo electrónico</label>
+        <input
+          type="email"
+          placeholder="Ingresa tu correo"
+          class="w-full p-3 rounded-lg bg-slate-100 border border-slate-300 focus:ring-2 focus:ring-pink-400 outline-none"
+        />
+        <!-- Misma documentación que el input de nombre -->
+      </div>
+
+      <!-- Mensaje -->
+      <div>
+        <label class="block font-semibold mb-1">Mensaje</label>
+        <textarea
+          rows="4"
+          placeholder="Escribe tu mensaje aquí"
+          class="w-full p-3 rounded-lg bg-slate-100 border border-slate-300 focus:ring-2 focus:ring-pink-400 outline-none"
+        ></textarea>
+        <!-- 
+          rows="4": altura de 4 filas
+          Misma documentación de estilos que los inputs
+        -->
+      </div>
+
+      <!-- Botón -->
+      <button
+        class="w-full py-3 bg-pink-500 hover:bg-pink-600 transition text-white rounded-lg font-bold text-lg"
+      >
+        Enviar mensaje
+        <!-- 
+          w-full: ancho completo
+          py-3: padding vertical
+          bg-pink-500: color de fondo rosa
+          hover:bg-pink-600: cambia de color al pasar el cursor
+          transition: transición suave
+          text-white: color de letra blanco
+          rounded-lg: bordes redondeados
+          font-bold: negrita
+          text-lg: tamaño de letra grande
+        -->
+      </button>
+
+    </form>
+
+  </div>
+</section>

@@ -1,0 +1,51 @@
+---
+const { titulo = "Mi Portafolio" } = Astro.props; 
+// Se recibe la propiedad 'titulo' desde el componente padre.
+// Si no se proporciona, se usa el valor por defecto "Mi Portafolio".
+---
+
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8" />
+    
+    <!-- Título de la página dinámico según la prop 'titulo' -->
+    <title>{titulo}</title>
+
+    <!-- Favicon de la página -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Estilos globales del proyecto -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Fuentes e iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+</head>
+
+<body >
+
+    <div class="flex min-h-screen w-full overflow-x-hidden">
+        <!-- Contenedor principal que ocupa toda la pantalla y permite flexibilidad en el diseño -->
+
+        <!-- BARRA LATERAL -->
+        <slot name="barra-lateral" />
+        <!-- Aquí se inserta el contenido que el componente padre pase con slot="barra-lateral" -->
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="flex-1 flex flex-col md:ml-72">
+            <!-- Área principal de la página; se desplaza a la derecha en pantallas medianas para dejar espacio a la barra lateral -->
+
+            <main class="flex-1 px-4 md:px-10 py-10 md:py-16">
+                <!-- Slot principal donde se renderizan las secciones de la página -->
+                <slot />
+            </main>
+
+            <!-- PIE DE PÁGINA -->
+            <slot name="footer" />
+            <!-- Aquí se inserta el pie de página si el componente padre lo provee -->
+        </div>
+    </div>
+</body>
+</html>
