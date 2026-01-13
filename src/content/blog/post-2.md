@@ -1,7 +1,7 @@
 ---
 title: "Visita al Banco de México y Chapultepec"
 description: "Un día de aprendizaje y diversión visitando el Banco de México y el Bosque de Chapultepec con compañeros de la universidad."
-date: 2025-11-12
+date: 2025-11-11
 image: "/img/Visita.jpeg"
 tags: ["Visita", "Educación", "Cultura", "Chapultepec"]
 ---

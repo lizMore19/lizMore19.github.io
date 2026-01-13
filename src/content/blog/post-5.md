@@ -1,7 +1,7 @@
 ---
 title: "Bienvenida y Concurso de Catrín y Catrina 2025"
 description: "Participación en la bienvenida de la unidad y el concurso de Catrín, Catrina y parejas, con actividades, comida y diversión."
-date: 2025-10-23
+date: 2025-10-22
 image: "/img/catrines.jpeg"
 tags: ["Bienvenida", "Concurso", "Tradición", "Universidad"]
 ---

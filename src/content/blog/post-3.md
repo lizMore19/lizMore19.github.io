@@ -1,7 +1,7 @@
 ---
 title: "Desfile Conmemorativo en San José del Rincón"
 description: "Participación en el desfile conmemorativo del 20 de noviembre con compañeros de la universidad."
-date: 2025-11-21
+date: 2025-11-20
 image: "/img/Desfile.jpeg"
 tags: ["Desfile", "Conmemoración", "Universidad", "Participación"]
 ---

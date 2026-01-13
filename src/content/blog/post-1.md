@@ -1,7 +1,7 @@
 ---
 title: "Hackathon Interledger Student EDOMEX 2025"
 description: "Participé en el Interledger Student Hackathon EDOMEX, desarrollando soluciones innovadoras de pagos en solo 24 horas."
-date: 2025-09-18
+date: 2025-09-17
 image: "/img/Interledgerr.jpeg"
 tags: ["Hackathon", "Open Payments", "Tecnología", "Innovación"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "4º Torneo de Guerra de Robots UES San José del Rincón"
 description: "Nuestro equipo Not Found se llevó el primer lugar con Destructorcito en el torneo de robots."
-date: 2025-12-06
+date: 2025-12-05
 image: "/img/torneo.jpeg"
 tags: ["Robots", "Competencia", "Tecnología"]
 ---
