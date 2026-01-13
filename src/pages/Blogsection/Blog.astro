@@ -1,0 +1,223 @@
+---
+import { getCollection } from 'astro:content';
+
+// Obtener todos los posts ordenados por fecha
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const postsPerPage = 3;
+const totalPages = Math.ceil(allPosts.length / postsPerPage);
+---
+
+<section class="py-16 px-6 bg-gradient-to-br from-pink-50 to-purple-50">
+  <div class="max-w-6xl mx-auto">
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">Blog</h2>
+      <p class="text-gray-600">Experiencias y aprendizajes</p>
+    </div>
+
+    <!-- Contenedor del carrusel -->
+    <div id="blog-carousel" class="relative">
+      <!-- Posts Container -->
+      <div class="min-h-[600px]">
+        {Array.from({ length: totalPages }).map((_, pageIndex) => {
+          const start = pageIndex * postsPerPage;
+          const end = start + postsPerPage;
+          const pagePosts = allPosts.slice(start, end);
+          
+          return (
+            <div 
+              class={`carousel-page grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 ${pageIndex === 0 ? 'active' : ''}`}
+              data-page={pageIndex + 1}
+            >
+              {pagePosts.map((post) => (
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                  <!-- Imagen -->
+                  <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-600 overflow-hidden">
+                    {post.data.image ? (
+                      <img 
+                        src={post.data.image} 
+                        alt={post.data.title}
+                        class="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div class="w-full h-full flex items-center justify-center text-white text-6xl font-bold">
+                        {post.data.title.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+
+                  <!-- Contenido -->
+                  <div class="p-6">
+                    <!-- Fecha -->
+                    <time class="text-sm text-pink-600 font-semibold">
+                      {new Date(post.data.date).toLocaleDateString('es-MX', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+
+                    <!-- Título -->
+                    <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3 line-clamp-2">
+                      {post.data.title}
+                    </h3>
+
+                    <!-- Descripción -->
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                      {post.data.description}
+                    </p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {post.data.tags && post.data.tags.slice(0, 3).map((tag) => (
+                        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-xs rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <!-- Botón Ver más -->
+                    <a 
+                      href={`/blog/${post.slug}`}
+                      class="inline-block bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-full hover:from-pink-600 hover:to-purple-700 transition-all duration-300 text-sm font-semibold"
+                    >
+                      Ver más →
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Controles de navegación -->
+      {totalPages > 1 && (
+        <div class="flex items-center justify-center gap-4">
+          <button 
+            id="prev-btn"
+            class="px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+          >
+            ← Anterior
+          </button>
+
+          <span id="page-indicator" class="text-gray-700 font-semibold">
+            1 / {totalPages}
+          </span>
+
+          <button 
+            id="next-btn"
+            class="px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+          >
+            Siguiente →
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function() {
+    window.addEventListener('load', function() {
+      var pages = document.querySelectorAll('.carousel-page');
+      var prevBtn = document.getElementById('prev-btn');
+      var nextBtn = document.getElementById('next-btn');
+      var pageIndicator = document.getElementById('page-indicator');
+      
+      var currentPage = 1;
+      var totalPages = pages.length;
+
+      function updateCarousel() {
+        for (var i = 0; i < pages.length; i++) {
+          pages[i].classList.remove('active');
+          pages[i].style.display = 'none';
+        }
+
+        var currentPageElement = document.querySelector('.carousel-page[data-page="' + currentPage + '"]');
+        if (currentPageElement) {
+          currentPageElement.classList.add('active');
+          currentPageElement.style.display = 'grid';
+        }
+
+        if (pageIndicator) {
+          pageIndicator.textContent = currentPage + ' / ' + totalPages;
+        }
+
+        if (prevBtn) {
+          prevBtn.disabled = (currentPage === 1);
+        }
+        if (nextBtn) {
+          nextBtn.disabled = (currentPage === totalPages);
+        }
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (currentPage > 1) {
+            currentPage = currentPage - 1;
+            updateCarousel();
+            var carousel = document.getElementById('blog-carousel');
+            if (carousel) {
+              carousel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          if (currentPage < totalPages) {
+            currentPage = currentPage + 1;
+            updateCarousel();
+            var carousel = document.getElementById('blog-carousel');
+            if (carousel) {
+              carousel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        });
+      }
+
+      updateCarousel();
+    });
+  })();
+</script>
+
+<style>
+  .carousel-page {
+    display: none;
+  }
+
+  .carousel-page.active {
+    display: grid;
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

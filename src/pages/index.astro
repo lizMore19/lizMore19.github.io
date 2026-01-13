@@ -7,8 +7,10 @@ import SobreMi from '../components/templates/SobreMi.astro';
 import Habilidades from '../components/templates/Habilidades.astro';
 import Proyectos from '../components/templates/Proyectos.astro';
 import Contacto from '../components/templates/Contacto.astro';
+import ContactForm from '../components/molecules/ContactForm.jsx';      
 import Avatar from '../components/atoms/Avatar.astro'; // Componente de avatar para la foto de perfil
 import Footer from '../components/templates/Footer.astro'; // Pie de página
+import Blog from '../pages/Blogsection/Blog.astro';
 ---
 
 <!-- Se envuelve todo el contenido dentro del layout principal -->
@@ -42,6 +44,11 @@ import Footer from '../components/templates/Footer.astro'; // Pie de página
                 </a>
             </li>
             <li>
+                <a href="#blog" class="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-800">
+                    Blog
+                </a>
+            </li>
+            <li>
                 <a href="#contacto" class="flex items-center gap-3 px-4 py-2 text-pink-600 hover:text-pink-800">
                     Contacto
                 </a>
@@ -66,8 +73,12 @@ import Footer from '../components/templates/Footer.astro'; // Pie de página
         <Proyectos /> <!-- Componente que muestra los proyectos -->
     </section>
 
+    <section id="blog">
+        <Blog />
+    </section>
+
     <section id="contacto">
-        <Contacto /> <!-- Componente con formulario -->
+        <ContactForm client:load /> <!-- Componente con formulario -->
     </section>
 
     <section id="footer">

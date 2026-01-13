@@ -112,3 +112,112 @@
 
   </div>
 </section>
+
+<!-- 
+import { useState, useRef, useMemo } from "react";
+
+function Label(props) {
+    return (
+        <label className="block font-semibold mb-1">
+            {props.children}
+        </label>
+    );
+}
+
+function Input({props, ...rest}) {
+    return (
+        <input
+            className="w-full p-3 rounded-lg bg-slate-100 border border-slate-300 focus:ring-2 focus:ring-pink-400 outline-none"
+            {...rest}
+
+
+        />
+    );
+}
+
+
+function TextArea({props, ...rest}) {
+    return (
+        <textarea
+            className="w-full p-3 rounded-lg bg-slate-100 border border-slate-300 focus:ring-2 focus:ring-pink-400 outline-none"
+            {...rest}
+
+        />
+    )
+}
+
+
+
+export default function ContactFrom() {
+
+    const [loading, setLoading] = useState(false);
+
+    const nameRef = useRef(null)
+    const emailRef = useRef(null)
+    const messageRef = useRef(null)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+            nameRef.current.value = "";
+            emailRef.current.value = "";
+            messageRef.current.value = "";
+        }, 2000);
+    }
+
+
+    const SubmiButton = useMemo(() => {
+        return (
+            <button
+                type="submit"
+                className="w-full py-3 bg-pink-500 hover:bg-pink-600 transition text-white rounded-lg font-bold text-lg disabled:cursor-not-allowed disabled:text-gray-500"
+                onClick={handleSubmit}
+            >
+                {loading ? "Sending..." : "Send"}
+            </button>
+
+        );
+
+    }, [loading]);
+
+
+    return (
+        <div className="w-full flex justify-center mt-10">
+            <div className="max-w-lg w-full bg-white shadow-lg rounded-xl p-8 border border-slate-200">
+                <>
+                    <fieldset className="space-y-6" disabled={loading}>
+                        <div>
+                            <Label>Name</Label>
+                            <Input placeholder="Your Name" ref={nameRef} />
+                        </div>
+                        <div>
+                            <Label>Email</Label>
+                            <Input type="email" placeholder="Your Email" ref={emailRef} />
+                        </div>
+                        <div>
+                            <Label>Message</Label>
+                            <TextArea placeholder="Your Message" rows={6} ref={messageRef} />
+                        </div>
+                        {SubmiButton}
+
+                    </fieldset>
+                </>
+            </div>
+        </div>
+
+    );
+}
+
+
+
+
+
+
+        -->
+
+
+
+
