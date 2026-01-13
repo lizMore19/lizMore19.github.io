@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import DiseñoPrincipal from '../../layouts/DiseñoPrincipal.astro';
+import '../../styles/global.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -15,11 +15,26 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<DiseñoPrincipal titulo={`${post.data.title} | Blog`}>
-  <div class="bg-gradient-to-br from-pink-50 via-white to-purple-50 min-h-screen -mx-4 md:-mx-10 -my-10 md:-my-16 px-4 md:px-10 py-10 md:py-16">
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{post.data.title} | Blog</title>
+    <meta name="description" content={post.data.description}>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <!-- Botón volver sticky mejorado -->
-    <div class="fixed top-6 left-6 md:left-80 z-50">
+    <!-- Fuentes e iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bg-gradient-to-br from-pink-50 via-white to-purple-50 min-h-screen w-full">
+    
+    <!-- Botón volver -->
+    <div class="fixed top-6 left-6 z-50">
       <a 
         href="/#blog"
         class="flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-pink-200 hover:border-pink-400 hover:scale-105"
@@ -30,7 +45,7 @@ const { Content } = await post.render();
     </div>
 
     <main class="pt-24 pb-16">
-      <article class="max-w-6xl mx-auto px-6 py-8">
+      <article class="max-w-6xl mx-auto py-8 px-4">
         <!-- Header: Fecha, Título, Descripción y Tags centrados -->
         <header class="mb-10 text-center">
           <time class="text-pink-600 font-semibold text-sm uppercase tracking-wide block mb-4">
@@ -82,9 +97,8 @@ const { Content } = await post.render();
       </article>
 
       <!-- Posts relacionados -->
-      <section class="bg-gradient-to-br from-pink-50 to-purple-50 py-12 mt-16 rounded-2xl">
-        <div class="max-w-4xl mx-auto px-6">
-          
+      <section class="bg-gradient-to-br from-pink-50 to-purple-50 py-12 mt-16 rounded-2xl max-w-6xl mx-auto">
+        <div class="px-6">
           
           <div class="text-center">
             <a 
@@ -98,10 +112,11 @@ const { Content } = await post.render();
       </section>
     </main>
   </div>
-</DiseñoPrincipal>
+</body>
+</html>
 
 <style>
-  /* Estilos mejorados para el contenido markdown */
+  /* Estilos para el contenido markdown */
   .prose {
     color: #374151;
     line-height: 1.75;
